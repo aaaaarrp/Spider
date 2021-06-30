@@ -1,9 +1,9 @@
 
 # Spider Induction Process
-## DevOps task 1 <br>
+## DevOps task<br>
 <br>
 
->### _**Task:** To setup the users and required functionalities_
+>### _**Task 1:** To setup the users and required functionalities_
 
 * [x] setupusers.sh for the following points
     * Create the following users (& necessary groups) with the specified permissions. 
