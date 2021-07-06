@@ -2,17 +2,17 @@
 
 echo
 echo "Register your complaint here."
-echo "Write your Username:" 
+echo "Write your username:" 
 read name
 
-if [ "$name" == Meteorologist_1 -o "$name" == Meteorologist_2 -o "$name" == Meteorologist_3 -o "$name" == Meteorologist_4 -o "$name" == Meteorologist_5 -o "$name" == Meteorologist_6 -o "$name" == Meteorologist_7 -o "$name" == Meteorologist_8 -o "$name" == Meteorologist_9 -o "$name" == Meteorologist_10 ]
+if [ "$name" == meteorologist_1 -o "$name" == meteorologist_2 -o "$name" == meteorologist_3 -o "$name" == meteorologist_4 -o "$name" == meteorologist_5 -o "$name" == meteorologist_6 -o "$name" == meteorologist_7 -o "$name" == meteorologist_8 -o "$name" == meteorologist_9 -o "$name" == meteorologist_10 ]
 then
     echo
     echo "Choose your complaint type..."
 else
     echo "Username doesn't exist! Try again."
     read name  
-    until [ "$name" == Meteorologist_1 -o "$name" == Meteorologist_2 -o "$name" == Meteorologist_3 -o "$name" == Meteorologist_4 -o "$name" == Meteorologist_5 -o "$name" == Meteorologist_6 -o "$name" == Meteorologist_7 -o "$name" == Meteorologist_8 -o "$name" == Meteorologist_9 -o "$name" == Meteorologist_10 ]
+    until [ "$name" == meteorologist_1 -o "$name" == meteorologist_2 -o "$name" == meteorologist_3 -o "$name" == meteorologist_4 -o "$name" == meteorologist_5 -o "$name" == meteorologist_6 -o "$name" == meteorologist_7 -o "$name" == meteorologist_8 -o "$name" == meteorologist_9 -o "$name" == meteorologist_10 ]
         do
             echo "Username doesn't exist! Try again."
             read name
@@ -66,34 +66,35 @@ echo
 date=$(date +%F) 
 complaint_id=$(printf '%s\n' "$( uuidgen )")  #To_Print_a_Unique_Complaint_ID_everytime
 
-if [ "$name" == Meteorologist_1 ]
+if [ "$name" == meteorologist_1 ]
 then
-    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/Maintainer_1/complaints_data/meteorologist_1_complaints.txt
-elif [ "$name" == Meteorologist_2 ]
+    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/maintainer_1/complaints_data/meteorologist_1_complaints.txt
+elif [ "$name" == meteorologist_2 ]
  then
-    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/Maintainer_1/complaints_data/meteorologist_2_complaints.txt
-elif [ "$name" == Meteorologist_3 ]
+    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/maintainer_1/complaints_data/meteorologist_2_complaints.txt
+elif [ "$name" == meteorologist_3 ]
 then
-    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/Maintainer_2/complaints_data/meteorologist_3_complaints.txt
-elif [ "$name" == Meteorologist_4 ]
+    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/maintainer_2/complaints_data/meteorologist_3_complaints.txt
+elif [ "$name" == meteorologist_4 ]
 then
-    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/Maintainer_2/complaints_data/meteorologist_4_complaints.txt
-elif [ "$name" == Meteorologist_5 ]
+    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/maintainer_2/complaints_data/meteorologist_4_complaints.txt
+elif [ "$name" == meteorologist_5 ]
 then
-    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/Maintainer_3/complaints_data/meteorologist_5_complaints.txt
-elif [ "$name" == Meteorologist_6 ]
+    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/maintainer_3/complaints_data/meteorologist_5_complaints.txt
+elif [ "$name" == meteorologist_6 ]
 then
-    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/Maintainer_3/complaints_data/meteorologist_6_complaints.txt
-elif [ "$name" == Meteorologist_7 ]
+    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/maintainer_3/complaints_data/meteorologist_6_complaints.txt
+elif [ "$name" == meteorologist_7 ]
 then
-    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/Maintainer_4/complaints_data/meteorologist_7_complaints.txt
-elif [ "$name" == Meteorologist_8 ]
+    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/maintainer_4/complaints_data/meteorologist_7_complaints.txt
+elif [ "$name" == meteorologist_8 ]
 then
-    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/Maintainer_4/complaints_data/meteorologist_8_complaints.txt
-elif [ "$name" == Meteorologist_9 ]
+    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/maintainer_4/complaints_data/meteorologist_8_complaints.txt
+elif [ "$name" == meteorologist_9 ]
 then
-    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/Maintainer_5/complaints_data/meteorologist_9_complaints.txt
-elif [ "$name" == Meteorologist_10 ]
+    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/maintainer_5/complaints_data/meteorologist_9_complaints.txt
+elif [ "$name" == meteorologist_10 ]
 then
-    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/Maintainer_5/complaints_data/meteorologist_10_complaints.txt
+    echo $date $complaint_id $name $complaint_type $complaint_description $severity >> /home/maintainer_5/complaints_data/meteorologist_10_complaints.txt
 fi
+

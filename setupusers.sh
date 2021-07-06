@@ -1,80 +1,89 @@
 #!/bin/bash
 
 
-#1_Users_and_Groups
+#Users_and_Groups
 
-sudo groupadd meteorology
-sudo groupadd maintenance
-sudo useradd -s /bin/bash commander
-sudo usermod -a -G meteorology,maintenance commander
-sudo useradd -G meteorology -s /bin/bash meteorology_head
-sudo useradd -G maintenance -s /bin/bash maintenance_manager
+groupadd meteorology
+groupadd maintenance
+useradd  -m -d /home/commander -s /bin/bash commander
+usermod -a -G meteorology,maintenance commander
+useradd -G meteorology -m -d /home/meteorology_head -s /bin/bash meteorology_head
+useradd -G maintenance -m -d /home/maintenance_manager -s /bin/bash maintenance_manager
 
 for user in {1..10}
 do
-    sudo useradd -G meteorology -s /bin/bash Meteorologist_$user
+useradd -G meteorology -m -d /home/meteorologist_$user -s /bin/bash meteorologist_$user
 done
 
 for user in {1..5}
 do
-    sudo useradd -G maintenance -s /bin/bash Maintainer_$user
+useradd -G maintenance -m -d /home/maintainer_$user -s /bin/bash maintainer_$user
 done
 
-#2_Permissions
+#Permissions
 
-chmod u-x,g-rx,o-rx /home/commander  #commander_permission
+chmod g-rx,o-rx /home/commander  #commander_permission
 
-chmod u-x,g-rx,o-rx /home/meteorology_head       #meteorology_head_permission
-setfacl -m u:commander:rw- /home/meteorology_head
+chmod g-rx,o-rx /home/meteorology_head       #meteorology_head_permission
+setfacl -m u:commander:rwx /home/meteorology_head
 
-getfacl --access /home/meteorology_head | setfacl -d -M- /home/maintenance_manager   #ccopying_same_permission_for_maintenance_manager
+chmod g-rx,o-rx /home/maintenance_manager    #maintenace_manager_permission
+setfacl -m u:commander:rwx /home/maintenance_manager  
 
 for user in {1..10}    #meteorologists_permission
 do
-chmod u-x,g-rx,o-rx /home/Meteorologist_$user
-setfacl -m u:meteorology_head:rw- /home/Meteorologist_$user
-setfacl -m u:commander:rw- /home/Meteorologist_$user
+chmod g-rx,o-rx /home/meteorologist_$user
+setfacl -m u:meteorology_head:rwx /home/meteorologist_$user
+setfacl -m u:commander:rwx /home/meteorologist_$user
 done
 
 for user in {1..5}    #maintainers_permission
 do
-chmod u-x,g-rx,o-rx /home/Maintainer_$user
-setfacl -m u:maintenance_manager:rw- /home/Maintainer_$user
-setfacl -m u:commander:rw- /home/Maintainer_$user
+chmod g-rx,o-rx /home/maintainer_$user
+setfacl -m u:maintenance_manager:rwx /home/maintainer_$user
+setfacl -m u:commander:rwx /home/maintainer_$user
 done
 
-#3_Directories_inside_the_home_directory
+#Directories_inside_the_home_directory
 
 for user in {1..10}
 do
-    sudo -u Meteorologist_$user mkdir /home/Meteorologist_$user/data
+    sudo -u meteorologist_$user mkdir /home/meteorologist_$user/data
 done
 
 for user in {1..5}
 do
-    sudo -u Maintainer_$user mkdir /home/Maintainer_$user/complaints_data
-    sudo -u Maintainer_$user mkdir /home/Maintainer_$user/status
+    sudo -u maintainer_$user mkdir /home/maintainer_$user/complaints_data
+    sudo -u maintainer_$user mkdir /home/maintainer_$user/status
 done
 
 sudo -u meteorology_head mkdir /home/meteorology_head/stats
 sudo -u maintenance_manager mkdir /home/maintenance_manager/stats
 sudo -u commander mkdir /home/commander/weather
 
-#4_Login_facilities
 
-sudo passwd commander
-echo commander_xyz | passwd commander --stdin
+#Login_facilities
 
-for user in Meteorologist_{1..10}
+echo "commander:123commander" | chpasswd
+echo "meteorology_head:123meteorology_head" | chpasswd
+echo "maintenance_manager:123maintenance_manager" | chpasswd
+
+for user in {1..10}
 do
-    sudo useradd $user
-    sudo passwd $user
-    echo $user"_xyz" | passwd  $user --stdin
+echo "meteorologist_$user:123meteorologist_$user" | chpasswd
 done
 
-for user in Maintainer_{1..5}
+for user in {1..5}
 do
-    sudo useradd $user
-    sudo passwd $user
-    echo $user"_xyz" | passwd  $user --stdin
+echo "maintainer_$user:123maintainer_$user" | chpasswd
 done
+
+
+
+
+
+
+
+
+
+
