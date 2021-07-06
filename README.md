@@ -3,7 +3,10 @@
 ## DevOps task<br>
 <br>
 
->### _**Task 1:** To setup the users and required functionalities_
+>### **Task 1:** To setup the users and required functionalities<br>
+<br>
+
+### _BASIC MODE:_
 
 * [x] setupusers.sh
 * [x] setupcomplaints.sh 
