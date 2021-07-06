@@ -23,6 +23,10 @@ else
     read complaint_id
 fi
 echo
+echo "Status ?"
+echo
+echo '(Reply with either "Pending" or "Completed")'
+echo
 read status
 
 if [ "$status" == Pending -o "$status" == Completed -o "$status" == pending -o "$status" == completed ]
