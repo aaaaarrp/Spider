@@ -1,14 +1,27 @@
 #!/bin/bash
 
 echo
-echo "Enter meteorologist name:"
+echo "Enter meteorologist's name:"
 read name
 echo
-echo "Enter complaint id:"
-read complaint_id
-echo
-echo "Status ?"
-echo '(Reply with either "Pending" or "Completed")'
+
+if [ "$name" == meteorologist_1 -o "$name" == meteorologist_2 -o "$name" == meteorologist_3 -o "$name" == meteorologist_4 -o "$name" == meteorologist_5 -o "$name" == meteorologist_6 -o "$name" == meteorologist_7 -o "$name" == meteorologist_8 -o "$name" == meteorologist_9 -o "$name" == meteorologist_10 ]
+then
+    echo
+    echo "Enter complaint ID:"
+    read complaint_id
+else
+    echo "Name doesn't exist! Try again."
+    read name  
+    until [ "$name" == meteorologist_1 -o "$name" == meteorologist_2 -o "$name" == meteorologist_3 -o "$name" == meteorologist_4 -o "$name" == meteorologist_5 -o "$name" == meteorologist_6 -o "$name" == meteorologist_7 -o "$name" == meteorologist_8 -o "$name" == meteorologist_9 -o "$name" == meteorologist_10 ]
+        do
+            echo "Name doesn't exist! Try again."
+            read name
+        done
+    echo
+    echo "Enter complaint ID:"
+    read complaint_id
+fi
 echo
 read status
 
